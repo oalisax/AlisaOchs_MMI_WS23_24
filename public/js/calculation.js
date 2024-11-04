@@ -41,28 +41,54 @@ function updateDisplay() {
 }
 
 
-// this should be a very helpful comment
-getGreetingDependOnTime = function (myDate) {
-    let timeBegin = '06:00';
-    let timeEnd = '22:00';
-    const dateBegin = new Date('2020-01-01 ' + timeBegin);
-    const dateEnd = new Date('2020-01-01 ' + timeEnd);
+getGreetingDependOnTime =  function (myDate) {
+    let timeMorning = '05:00';
+    let timeDay = '12:00';
+    let timeEvening = '18:00';
+
+    const dateMorningStart = new Date('2020-01-01 ' + timeMorning);
+    const dateDayStart = new Date('2020-01-01 ' + timeDay);
+    const dateEveningStart = new Date('2020-01-01 ' + timeEvening);
     const dateCurrent = new Date('2020-01-01 ' + myDate.getHours() + ":" + myDate.getMinutes());
 
-    if (dateBegin.getTime() < dateCurrent.getTime()) { //"guten morgen"
-        if (dateCurrent.getTime() >= dateEnd.getTime()) {
 
-            return "Guten Morgen"
-        }
-        else {
-            return "Guten Abend"
-        }
-    } else {
-        newVariable = dateCurrent.getTime()
-        console.log("For debugging: ") + dateBegin.getTime() + " " + dateCurrent.getTime() + " " + dateEnd.getTime()
+    if (dateCurrent.getTime() >= dateMorningStart.getTime() && dateCurrent.getTime() < dateDayStart.getTime()) {
         return "Guten Morgen"
     }
-}
+    else if (dateCurrent.getTime() >= dateDayStart.getTime() && dateCurrent.getTime() < dateEveningStart.getTime()){
+        return "Guten Tag"
+    }
+    else {
+        return "Guten Abend"
+    }
+} 
+
+/*getGreetingDependOnTime = function (myDate) {
+    let morningBegin = '06:00';
+    let dayTimeBegin = '12:00';
+    let eveningBegin = '18:00';
+    let nightBegin = '22:00';
+
+    const datemorningBegin = new Date('2020-01-01T' + morningBegin);
+    const dateDayTimeBegin = new Date('2020-01-01T' + dayTimeBegin);
+    const dateEveningBegin = new Date('2020-01-01T' + eveningBegin);
+    const dateNightBegin = new Date('2020-01-01T' + nightBegin);
+
+    const dateCurrent = new Date('2020-01-01T' + myDate.getHours() + ":" + myDate.getMinutes());
+
+    if (dateCurrent.getTime() >= datemorningBegin.getTime() && dateCurrent.getTime() < dateDayTimeBegin.getTime()) {
+        return "Guten Morgen";
+    } 
+    else if (dateCurrent.getTime() >= dateDayTimeBegin.getTime() && dateCurrent.getTime() < dateEveningBegin.getTime()) {
+        return "Guten Tag";
+    }
+     else if (dateCurrent.getTime() >= dateEveningBegin.getTime() && dateCurrent.getTime() < dateNightBegin.getTime()) {
+        return "Guten Abend";
+    } 
+    else {
+        return "Gute Nacht";
+    }
+}*/
 
 
 

@@ -21,4 +21,15 @@ describe('#sum()', function () {
         expect(sum([1, 2, 3, 4, 5])).to.equal(15);
     })
 
+    it('should add negative numbers', function () {
+        expect(sum([-1, -2, -3, -4, -5])).to.equal(-15);
+    })
+
+    it('should handle single numbers', function () {
+        expect(sum([15])).to.equal(15);
+    })
+
+    it('should handle no numbers', function () {
+        expect(sum([])).to.equal(0);
+    })
 });

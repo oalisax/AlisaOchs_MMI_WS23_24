@@ -29,10 +29,12 @@ describe("celciusToFahrenheit()", function(){
 
 describe("GreetingDependOnTime()", function(){
     it('time in the morning', function(){
-    //expect(apiGreeting.getGreetingDependOnTime('2024-01-01 07:00').to.equal("Guten Morgen"))
-        assert.expect(apiGreeting.getGreetingDependOnTime(new Date('2020-01-01T07:00')).to.equal("Guten Morgen"))
+        expect(apiGreeting.getGreetingDependOnTime(new Date("2020-01-01T07:00"))).to.equal("Guten Morgen")
+    })
+    it('time during the day', function(){
+        expect(apiGreeting.getGreetingDependOnTime(new Date("2024-01-01T14:00"))).to.equal("Guten Tag")
     })
     it('time in the evening', function(){
-        expect(apiGreeting.getGreetingDependOnTime('2024-01-01 19:00').to.equal("Guten Abend"))
+        expect(apiGreeting.getGreetingDependOnTime(new Date("2024-01-01T19:00"))).to.equal("Guten Abend")
     })
 })
